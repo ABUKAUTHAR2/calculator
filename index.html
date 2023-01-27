@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CALC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body{
+        background-color: #3b4664;
+        font-family: 'Spartan', sans-serif;
+        color: white;
+        font-size: 32px;
+        
+
+      }
+      input {
+        height: 30PX;
+        width: 19%;
+        border-radius: 10%;
+        border-color: white;
+      
+      }
+      #bttn1{
+        background-color: #252d44;
+        height: 209px;
+        width: 250px;
+        padding-left: 2%;
+        margin-left: 35%;
+        border-radius: 2%;
+       
+      }
+      #reset{
+        color: #ffffff;
+        background-color: #647299;
+        width: 105px;
+        border-color: #647299;
+        border-radius: 5%;
+      }
+
+    #outpt{
+      width: 270px;
+      height: 80px;
+      background-color: #181f32;
+      margin-left: 35%;
+      border-radius: 2%;
+      padding-top: 0%;
+    
+      font-size: 100%;
+    }
+    #calc{
+        padding-left: 2%;
+        margin-left: 35%;
+        padding-bottom: -15px;
+        font-size: 14px;
+        padding-top: 2%;
+        float: left;
+    }
+
+
+
+
+    .switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 15px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #181f32;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 10px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgb(174, 0, 0);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #181f32;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+    .slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+#cbox{
+  float: right;
+        
+        margin-right: 45%;
+        font-size: 14px;
+      
+}
+    </style>
+  </head>
+  <body>
+    <b><p id="calc">calc</p></b>
+    <div id="main">
+      <h6 style="float: right; font-size: 8px;   margin-right: 45%;  ">1 2 3</h6>
+      <h6 style="float: left; font-size: 8px;  padding-top: 2.1%; margin-left: 9%; ">THEME</h6>
+      <div  id="cbox">
+        
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div> <br>
+      
+     
+      <form action="">
+        <p id="outpt" ></p>
+        <div id="bttn1">
+          <input type="button" value="7" onclick="nmb('7')">
+          <input type="button" value="8" onclick="nmb('8')">
+          <input type="button" value="9" onclick="nmb('9')">
+          <input type="button" value="del" style="background-color: #647299; border-color: #647299;" onclick=deleteLast()><br>
+          <input type="button" value="4" onclick="nmb('4')">
+          <input type="button" value="5" onclick="nmb('5')">
+          <input type="button" value="6" onclick="nmb('6')">
+          <input type="button" value="+" onclick="nmb('+')" ><br>
+          <input type="button" value="1" onclick="nmb('1')">
+          <input type="button" value="2" onclick="nmb('2')">
+          <input type="button" value="3" onclick="nmb('3')">
+          <input type="button" value="-" onclick="nmb('-')"><br>
+          <input type="button" value="." onclick="nmb ('.')">
+          <input type="button" value="0" onclick="nmb('0')">
+          <input type="button" value="/" onclick= "nmb('/')">
+          <input type="button" value="*" onclick="nmb('*')"><br>
+          <input type="button" value="Reset" id="reset" onclick="resetScreen()" >
+          <input type="button" value="=" id="reset" style="background-color:#d13f30 ; border-color: #d13f30;" onclick=calculate()>
+        </div>
+        </div>
+        
+
+      </form>
+    </div>
+    <script>
+      var screen = document.getElementById("outpt");
+      function nmb(char){
+        screen.innerHTML += char;
+      }
+      function reset(){
+    screen.innerHTML = "";
+      }     
+      function deleteLast() {
+    var currentText = screen.innerHTML;
+    screen.innerHTML = currentText.substring(0, currentText.length - 1);
+}
+
+function resetScreen() {
+    screen.innerHTML = "";
+}
+
+function calculate() {
+    var result = eval(screen.innerHTML);
+    screen.innerHTML = result;
+} 
+    </script>
+  </body>
+</html>
